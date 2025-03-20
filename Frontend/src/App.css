@@ -1,0 +1,15 @@
+/* Reset unwanted styles */
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Ensure the map is properly displayed */
+.leaflet-container {
+  width: 100%;
+  height: 500px; /* Adjust as needed */
+  z-index: 0;
+}
