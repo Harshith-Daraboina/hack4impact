@@ -1,4 +1,12 @@
-import React from "react";
+import Analyse from "../components/analyise";
+
 export default function Download() {
-  return <h2>Download Page</h2>;
+
+
+  
+  return (
+    <div className="flex flex-col flex-1 relative">
+      <Analyse />
+    </div>
+  );
 }

@@ -11,7 +11,7 @@ export default function Navbar() {
         </h1>
         
         {/* Navigation Links */}
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 items-center">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -36,13 +36,12 @@ export default function Navbar() {
           >
             About
           </NavLink>
-          <NavLink
-            to="/download"
-            className={({ isActive }) =>
-              `hover:text-gray-300 transition duration-300 ${isActive ? "font-bold border-b-2 border-white" : ""}`
-            }
-          >
-            Download
+
+          {/* Stylish Analyze Button */}
+          <NavLink to="/download">
+            <button className="bg-white text-blue-700 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-blue-100 transition duration-300">
+              Analyze
+            </button>
           </NavLink>
         </div>
       </div>

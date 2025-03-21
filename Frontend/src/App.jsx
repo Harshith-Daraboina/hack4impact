@@ -22,16 +22,14 @@ export default function App() {
             <Route
               path="/"
               element={
-                <Home
-                  weatherData={weatherData}
-                  mapCenter={mapCenter}
-                  setWeatherData={setWeatherData}
-                  setMapCenter={setMapCenter}
-                />
+                <Home/>
               }
             />
             <Route path="/about" element={<About />} />
-            <Route path="/trends" element={<Trends />} />
+            <Route path="/trends" element={<Trends  weatherData={weatherData}
+                  mapCenter={mapCenter}
+                  setWeatherData={setWeatherData}
+                  setMapCenter={setMapCenter}/>} />
             <Route path="/download" element={<Download />} />
           </Routes>
         </div>

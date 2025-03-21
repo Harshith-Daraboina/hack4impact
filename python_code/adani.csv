@@ -1,9 +1,3 @@
-import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-
-const OPENWEATHER_API_KEY = "c292a76aa27bd280ab4b44db7e5559ba";
-
 const locations = [
   { city: "Kamuthi", state: "Tamil Nadu", power: 648, lat: 9.3915, lon: 78.1195 },
   { city: "Hattigudur", state: "Karnataka", power: 50, lat: 16.2320, lon: 76.3930 },
@@ -59,60 +53,3 @@ const locations = [
   { city: "Bikaner", state: "Rajasthan", power: 200, lat: 28.0229, lon: 73.3119 },
   { city: "Jaisalmer", state: "Rajasthan", power: 150, lat: 26.9150, lon: 70.9080 }
 ];
-
-export default function Home() {
-  const [selectedLocation, setSelectedLocation] = useState(null);
-  const [weatherData, setWeatherData] = useState(null);
-
-  // Fetch Weather Data
-  useEffect(() => {
-    if (selectedLocation) {
-      const fetchWeather = async () => {
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${selectedLocation.lat}&lon=${selectedLocation.lon}&appid=${OPENWEATHER_API_KEY}&units=metric`;
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        setWeatherData({
-          temperature: data.main.temp,
-          humidity: data.main.humidity,
-          solarIntensity: Math.floor(Math.random() * 300) + 600, // Simulated solar intensity (W/m²)
-        });
-      };
-      fetchWeather();
-    }
-  }, [selectedLocation]);
-
-  return (
-    <div className="flex flex-col flex-1 relative">
-      <h1 className="text-xl font-bold p-4">Adani Renewable Energy Locations</h1>
-      <MapContainer center={[23.0, 78.0]} zoom={5} style={{ height: "80vh", width: "100%" }}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
-        
-        {locations.map((location, index) => (
-          <Marker 
-            key={index} 
-            position={[location.lat, location.lon]}
-            eventHandlers={{ click: () => setSelectedLocation(location) }}
-          />
-        ))}
-        
-        {selectedLocation && weatherData && (
-          <Popup position={[selectedLocation.lat, selectedLocation.lon]} onClose={() => setSelectedLocation(null)}>
-            <div className="p-2">
-              <h2 className="font-bold text-lg">{selectedLocation.city}, {selectedLocation.state}</h2>
-              <p><strong>--Live Data--</strong> </p>
-              <p><strong>Temperature:</strong> {weatherData.temperature}°C</p>
-              <p><strong>Humidity:</strong> {weatherData.humidity}%</p>
-              <p><strong>Solar Intensity:</strong> {weatherData.solarIntensity} W/m²</p>
-              
-              {/* Analyze Button */}
-              <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition">
-                Analyze
-              </button>
-            </div>
-          </Popup>
-        )}
-      </MapContainer>
-    </div>
-  );
-}

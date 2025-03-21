@@ -1,17 +1,22 @@
 import React from "react";
-import PowerPlantMap from "../components/PowerPlantMap";
+import Sidebar from "../components/Sidebar";
+import MapComponent from "../components/MapComponent";
+import SearchBar from "../components/SearchBar";
 
-export default function Trends() {
+export default function trends({ weatherData, mapCenter, setWeatherData, setMapCenter }) {
   return (
-    <div className="h-screen w-full flex flex-col">
-      {/* Header */}
-      <header className="bg-blue-600 text-white text-center p-4 text-xl font-bold shadow-md">
-        🌍 Renewable Energy Trends
-      </header>
+    <div className="flex flex-col flex-1 relative">
+      <div className="absolute top-4 right-4 z-[1000]">
+        <SearchBar setWeatherData={setWeatherData} setMapCenter={setMapCenter} />
+      </div>
+   
 
-      {/* Map Section */}
-      <div className="flex-grow">
-        <PowerPlantMap />
+      {/* Floating Search Bar */}
+
+      {/* Main Content */}
+      <div className="flex flex-1">
+        <Sidebar weatherData={weatherData} />
+        <MapComponent weatherData={weatherData} mapCenter={mapCenter} />
       </div>
     </div>
   );
