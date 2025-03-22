@@ -98,19 +98,24 @@ export default function Home() {
         
         {selectedLocation && weatherData && (
           <Popup position={[selectedLocation.lat, selectedLocation.lon]} onClose={() => setSelectedLocation(null)}>
-            <div className="p-2">
-              <h2 className="font-bold text-lg">{selectedLocation.city}, {selectedLocation.state}</h2>
-              <p><strong>--Live Data--</strong> </p>
-              <p><strong>Temperature:</strong> {weatherData.temperature}°C</p>
-              <p><strong>Humidity:</strong> {weatherData.humidity}%</p>
-              <p><strong>Solar Intensity:</strong> {weatherData.solarIntensity} W/m²</p>
-              
-              {/* Analyze Button */}
-              <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition">
-                Analyze
-              </button>
-            </div>
-          </Popup>
+          <div className="p-2">
+            <h2 className="font-bold text-lg">{selectedLocation.city}, {selectedLocation.state}</h2>
+            <p><strong>--Live Data--</strong></p>
+            
+            <p><strong>🌡 Temperature:</strong> {weatherData.temperature}°C</p>
+            <p><strong>💧 Humidity:</strong> {weatherData.humidity}%</p>
+            <p><strong>☀️ Solar Intensity:</strong> {weatherData.solarIntensity} W/m²</p>
+            <p><strong>💨 Wind Speed:</strong> {weatherData.windSpeed} m/s</p>
+            <p><strong>🌪 Wind Pressure:</strong> {weatherData.windPressure} hPa</p>
+            <p><strong>🌧 Precipitation:</strong> {weatherData.precipitation} mm</p>
+            <p><strong>☁️ Cloud Cover:</strong> {weatherData.cloudCover}%</p>
+        
+            <hr className="my-2" />
+        
+            <p><strong>⚡ Estimated Power Output:</strong> get from Analyse Page</p>
+          </div>
+        </Popup>
+        
         )}
       </MapContainer>
     </div>

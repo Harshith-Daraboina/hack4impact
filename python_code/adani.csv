@@ -53,3 +53,14 @@ const locations = [
   { city: "Bikaner", state: "Rajasthan", power: 200, lat: 28.0229, lon: 73.3119 },
   { city: "Jaisalmer", state: "Rajasthan", power: 150, lat: 26.9150, lon: 70.9080 }
 ];
+
+
+
+
+
+
+
+
+
+
+

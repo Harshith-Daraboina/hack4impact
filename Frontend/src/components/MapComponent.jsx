@@ -5,8 +5,6 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 const DEFAULT_CENTER = [28.6139, 77.2090];
 const DEFAULT_ZOOM = 6;
 
-// ✅ Generate today's date for NASA GIBS
-const today = new Date().toISOString().split("T")[0];
 
 // ✅ API Key
 const OPENWEATHER_API_KEY = "c292a76aa27bd280ab4b44db7e5559ba";
@@ -18,10 +16,7 @@ const BASE_LAYERS = {
   "OpenWeather Temperature": `https://tile.openweathermap.org/map/temp/{z}/{x}/{y}.png?appid=${OPENWEATHER_API_KEY}`,
   "OpenWeather Wind Speed": `https://tile.openweathermap.org/map/wind/{z}/{x}/{y}.png?appid=${OPENWEATHER_API_KEY}`,
   "OpenWeather Clouds": `https://tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid=${OPENWEATHER_API_KEY}`,
-  "OpenWeather Precipitation": `https://tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png?appid=${OPENWEATHER_API_KEY}`,
-  "NASA Temperature": `https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_LST_Day/default/${today}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png`,
-  "NASA Humidity": `https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/AIRS_Total_Precipitable_Water_A/default/${today}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png`,
-  "NASA Cloud Cover": `https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_Cloud_FR/default/${today}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png`
+  "OpenWeather Precipitation": `https://tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png?appid=${OPENWEATHER_API_KEY}`
 };
 
 // ✅ Map Updater
